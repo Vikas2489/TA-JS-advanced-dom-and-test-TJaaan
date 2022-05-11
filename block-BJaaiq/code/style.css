@@ -12,14 +12,15 @@ body {
 }
 
 li {
-    font-size: 2.8rem;
+    font-size: 3.9rem;
     color: rgb(47, 45, 45);
     font-size: 550;
     margin: 2rem 0;
 }
 
-span {
+cite {
     display: block;
     font-size: 2.3rem;
     margin-top: 1.9rem;
+    margin-left: 1.9rem;
 }
