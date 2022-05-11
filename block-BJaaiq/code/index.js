@@ -1,37 +1,33 @@
 let ul = document.querySelector("ul");
 
+let max = 3;
+let index = 0;
 
+function addQuotes() {
+    for (let i = 0; i < max; i++) {
+        let li = document.createElement("li");
+        let blockQuote = document.createElement("blockquote");
+        blockQuote.innerText = quotes[index].quoteText;
+        let cite = document.createElement("cite");
+        cite.innerText = quotes[index].quoteAuthor;
+        li.append(blockQuote, cite);
+        ul.append(li);
+        index++;
+    }
+}
 
-window.addEventListener("scroll", () => {
-    while (true) {
-        let windowRelativeBottom = document.documentElement.getBoundingClientRect().bottom;
-        if (windowRelativeBottom > document.documentElement.clientHeight + 100) break;
+console.log(max);
 
-
-        document.body.append(quotes.forEach(function(elm) {
-            let li = document.createElement("li");
-            li.innerText = elm.quoteText;
-            let span = document.createElement("span");
-            span.innerText = elm.quoteAuthor;
-            li.append(span);
-            ul.append(li);
-        }))
+document.addEventListener("scroll", () => {
+    let clientHeight = document.documentElement.clientHeight;
+    let scrollHeight = document.documentElement.scrollHeight;
+    let scrollTop = document.documentElement.scrollTop;
+    if (clientHeight + scrollTop >= scrollHeight && index < quotes.length) {
+        addQuotes();
     }
 })
 
-
-
-
-
-
-// function populate() {
-//     while (true) {
-//         let windowRelativeBottom = document.documentElement.getBoundingClientRect().bottom;
-//         if (windowRelativeBottom > document.documentElement.clientHeight + 100) break;
-//         document.body.insertAdjacentHTML("beforeend", );
-//     }
-// }
-
-// window.addEventListener('scroll', populate);
-
-// populate();
+window.addEventListener("DOMContentLoaded", () => {
+    alert('The content is loaded!');
+    addQuotes();
+})
